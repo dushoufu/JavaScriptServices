@@ -1,61 +1,114 @@
 (function (e, a) { for (var i in a) e[i] = a[i]; }(exports, /******/(function (modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-
+/******/
 /******/ 		// Check if module is in cache
-/******/ 		if (installedModules[moduleId])
+/******/ 		if (installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-
+			/******/
+}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
-/******/ 			exports: {},
-/******/ 			id: moduleId,
-/******/ 			loaded: false
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
 			/******/
-		};
-
+};
+/******/
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
+/******/
 /******/ 		// Flag the module as loaded
-/******/ 		module.loaded = true;
-
+/******/ 		module.l = true;
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 		/******/
-	}
-
-
+}
+/******/
+/******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-
+/******/
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function (exports, name, getter) {
+/******/ 		if (!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+			/******/
+}
+		/******/
+};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function (exports) {
+/******/ 		if (typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+			/******/
+}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+		/******/
+};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function (value, mode) {
+/******/ 		if (mode & 1) value = __webpack_require__(value);
+/******/ 		if (mode & 8) return value;
+/******/ 		if ((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if (mode & 2 && typeof value != 'string') for (var key in value) __webpack_require__.d(ns, key, function (key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+		/******/
+};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function (module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+		/******/
+};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function (object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
-
+/******/
+/******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 	/******/
 })
 /************************************************************************/
 /******/([
 /* 0 */
-/***/ function (module, exports, __webpack_require__) {
+/***/ (function (module, exports, __webpack_require__) {
 
 			module.exports = __webpack_require__(1);
 
 
 			/***/
-		},
+}),
 /* 1 */
-/***/ function (module, exports, __webpack_require__) {
+/***/ (function (module, exports, __webpack_require__) {
 
 			"use strict";
+
+			exports.__esModule = true;
 			// Limit dependencies to core Node modules. This means the code in this file has to be very low-level and unattractive,
 			// but simplifies things for the consumer of this module.
 			__webpack_require__(2);
@@ -119,13 +172,13 @@
 			var parsedArgs = ArgsUtil_1.parseArgs(process.argv);
 			var listenAddress = (useWindowsNamedPipes ? '\\\\.\\pipe\\' : '/tmp/') + parsedArgs.listenAddress;
 			server.listen(listenAddress);
-			ExitWhenParentExits_1.exitWhenParentExits(parseInt(parsedArgs.parentPid));
+			ExitWhenParentExits_1.exitWhenParentExits(parseInt(parsedArgs.parentPid), /* ignoreSigint */ true);
 
 
 			/***/
-		},
+}),
 /* 2 */
-/***/ function (module, exports) {
+/***/ (function (module, exports) {
 
 			// When Node writes to stdout/strerr, we capture that and convert the lines into calls on the
 			// active .NET ILogger. But by default, stdout/stderr don't have any way of distinguishing
@@ -165,32 +218,34 @@
 
 
 			/***/
-		},
+}),
 /* 3 */
-/***/ function (module, exports) {
+/***/ (function (module, exports) {
 
 			module.exports = require("net");
 
 			/***/
-		},
+}),
 /* 4 */
-/***/ function (module, exports) {
+/***/ (function (module, exports) {
 
 			module.exports = require("path");
 
 			/***/
-		},
+}),
 /* 5 */
-/***/ function (module, exports) {
+/***/ (function (module, exports) {
 
 			module.exports = require("readline");
 
 			/***/
-		},
+}),
 /* 6 */
-/***/ function (module, exports) {
+/***/ (function (module, exports, __webpack_require__) {
 
 			"use strict";
+
+			exports.__esModule = true;
 			function parseArgs(args) {
 				// Very simplistic parsing which is sufficient for the cases needed. We don't want to bring in any external
 				// dependencies (such as an args-parsing library) to this file.
@@ -213,22 +268,24 @@
 
 
 			/***/
-		},
+}),
 /* 7 */
-/***/ function (module, exports) {
+/***/ (function (module, exports, __webpack_require__) {
+
+			"use strict";
 
 			/*
 			In general, we want the Node child processes to be terminated as soon as the parent .NET processes exit,
 			because we have no further use for them. If the .NET process shuts down gracefully, it will run its
 			finalizers, one of which (in OutOfProcessNodeInstance.cs) will kill its associated Node process immediately.
-		
+			
 			But if the .NET process is terminated forcefully (e.g., on Linux/OSX with 'kill -9'), then it won't have
 			any opportunity to shut down its child processes, and by default they will keep running. In this case, it's
 			up to the child process to detect this has happened and terminate itself.
-		
+			
 			There are many possible approaches to detecting when a parent process has exited, most of which behave
 			differently between Windows and Linux/OS X:
-		
+			
 			 - On Windows, the parent process can mark its child as being a 'job' that should auto-terminate when
 			   the parent does (http://stackoverflow.com/a/4657392). Not cross-platform.
 			 - The child Node process can get a callback when the parent disconnects (process.on('disconnect', ...)).
@@ -246,13 +303,13 @@
 				 However I don't see this documented anywhere. It would be nice if you could just poll for whether or not
 				 process.stdout is still connected (without actually writing to it) but I haven't found any property whose
 				 value changes until you actually try to write to it.
-		
+			
 			Of these, the only cross-platform approach that is actually documented as a valid strategy is simply polling
 			to check whether the parent PID is still running. So that's what we do here.
 			*/
-			"use strict";
+			exports.__esModule = true;
 			var pollIntervalMs = 1000;
-			function exitWhenParentExits(parentPid) {
+			function exitWhenParentExits(parentPid, ignoreSigint) {
 				setInterval(function () {
 					if (!processExists(parentPid)) {
 						// Can't log anything at this point, because out stdout was connected to the parent,
@@ -260,6 +317,24 @@
 						process.exit();
 					}
 				}, pollIntervalMs);
+				if (ignoreSigint) {
+					// Pressing ctrl+c in the terminal sends a SIGINT to all processes in the foreground process tree.
+					// By default, the Node process would then exit before the .NET process, because ASP.NET implements
+					// a delayed shutdown to allow ongoing requests to complete.
+					//
+					// This is problematic, because if Node exits first, the CopyToAsync code in ConditionalProxyMiddleware
+					// will experience a read fault, and logs a huge load of errors. Fortunately, since the Node process is
+					// already set up to shut itself down if it detects the .NET process is terminated, all we have to do is
+					// ignore the SIGINT. The Node process will then terminate automatically after the .NET process does.
+					//
+					// A better solution would be to have WebpackDevMiddleware listen for SIGINT and gracefully close any
+					// ongoing EventSource connections before letting the Node process exit, independently of the .NET
+					// process exiting. However, doing this well in general is very nontrivial (see all the discussion at
+					// https://github.com/nodejs/node/issues/2642).
+					process.on('SIGINT', function () {
+						console.log('Received SIGINT. Waiting for .NET process to exit...');
+					});
+				}
 			}
 			exports.exitWhenParentExits = exitWhenParentExits;
 			function processExists(pid) {
@@ -281,11 +356,13 @@
 
 
 			/***/
-		},
+}),
 /* 8 */
-/***/ function (module, exports, __webpack_require__) {
+/***/ (function (module, exports, __webpack_require__) {
 
 			"use strict";
+
+			exports.__esModule = true;
 			var events_1 = __webpack_require__(9);
 			var VirtualConnection_1 = __webpack_require__(10);
 			// Keep this in sync with the equivalent constant in the .NET code. Both sides split up their transmissions into frames with this max length,
@@ -311,7 +388,7 @@
 			/**
 			 * Tracks the 'virtual connections' associated with a single physical socket connection.
 			 */
-			var VirtualConnectionsCollection = (function () {
+			var VirtualConnectionsCollection = /** @class */ (function () {
 				function VirtualConnectionsCollection(_socket, _onVirtualConnectionCallback) {
 					var _this = this;
 					this._socket = _socket;
@@ -393,7 +470,7 @@
 					newVirtualConnection.on('finish', function () {
 						// The virtual connection was closed locally. Clean up locally, and notify the remote that we're done.
 						_this._onVirtualConnectionWasClosed(header.connectionIdString);
-						_this._sendFrame(header.connectionIdBinary, Buffer.alloc(0));
+						_this._sendFrame(header.connectionIdBinary, new Buffer(0));
 					});
 					this._virtualConnections[header.connectionIdString] = newVirtualConnection;
 					this._onVirtualConnectionCallback(newVirtualConnection);
@@ -455,7 +532,7 @@
 				 * Sends a number serialized in the correct format for .NET to receive as a System.Int32
 				 */
 				VirtualConnectionsCollection.prototype._sendInt32LE = function (value, callback) {
-					var buf = Buffer.alloc(4);
+					var buf = new Buffer(4);
 					buf.writeInt32LE(value, 0);
 					this._socket.write(buf, callback);
 				};
@@ -469,28 +546,38 @@
 
 
 			/***/
-		},
+}),
 /* 9 */
-/***/ function (module, exports) {
+/***/ (function (module, exports) {
 
 			module.exports = require("events");
 
 			/***/
-		},
+}),
 /* 10 */
-/***/ function (module, exports, __webpack_require__) {
+/***/ (function (module, exports, __webpack_require__) {
 
 			"use strict";
-			var __extends = (this && this.__extends) || function (d, b) {
-				for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-				function __() { this.constructor = d; }
-				d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-			};
+
+			var __extends = (this && this.__extends) || (function () {
+				var extendStatics = function (d, b) {
+					extendStatics = Object.setPrototypeOf ||
+						({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+						function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+					return extendStatics(d, b);
+				}
+				return function (d, b) {
+					extendStatics(d, b);
+					function __() { this.constructor = d; }
+					d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+				};
+			})();
+			exports.__esModule = true;
 			var stream_1 = __webpack_require__(11);
 			/**
 			 * Represents a virtual connection. Multiple virtual connections may be multiplexed over a single physical socket connection.
 			 */
-			var VirtualConnection = (function (_super) {
+			var VirtualConnection = /** @class */ (function (_super) {
 				__extends(VirtualConnection, _super);
 				function VirtualConnection(_beginWriteCallback) {
 					var _this = _super.call(this) || this;
@@ -510,7 +597,7 @@
 				};
 				VirtualConnection.prototype._write = function (chunk, encodingIfString, callback) {
 					if (typeof chunk === 'string') {
-						chunk = Buffer.from(chunk, encodingIfString);
+						chunk = new Buffer(chunk, encodingIfString);
 					}
 					this._beginWriteCallback(chunk, callback);
 				};
@@ -528,12 +615,12 @@
 
 
 			/***/
-		},
+}),
 /* 11 */
-/***/ function (module, exports) {
+/***/ (function (module, exports) {
 
 			module.exports = require("stream");
 
 			/***/
-		}
+})
 /******/])));
